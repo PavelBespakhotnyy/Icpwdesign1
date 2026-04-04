@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+
+:root {
+  --font-display: 'Manrope', sans-serif;
+  --font-body: 'Work Sans', sans-serif;
+
+  /* ICPW Design Tokens */
+  --icpw-surface: #fafaf5;
+  --icpw-surface-low: #f3f4ee;
+  --icpw-surface-lowest: #ffffff;
+  --icpw-surface-highest: #e0e4dc;
+  --icpw-primary: #50662b;
+  --icpw-primary-dim: #455a20;
+  --icpw-on-surface: #2f342e;
+  --icpw-on-surface-variant: #5c605a;
+  --icpw-tertiary: #0e6781;
+  --icpw-outline-variant: #afb3ac;
+  --icpw-secondary: #516170;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--icpw-surface);
+  color: var(--icpw-on-surface);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
