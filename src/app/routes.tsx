@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createHashRouter } from "react-router";
 import { Layout } from "./components/Layout";
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
@@ -38,7 +38,7 @@ function NotFound() {
         Возможно, страница была перемещена или адрес введён неверно.
       </p>
       <a
-        href="/"
+        href="#/"
         className="px-6 py-3 rounded-lg text-sm text-white"
         style={{
           background: 'linear-gradient(135deg, #50662b 0%, #455a20 100%)',
@@ -53,7 +53,7 @@ function NotFound() {
   );
 }
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   {
     path: "/",
     Component: Layout,
