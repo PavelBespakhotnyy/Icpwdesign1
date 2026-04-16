@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router";
 import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
+import { useTheme, type Palette } from "../context/ThemeContext";
 
 const navItems = [
   { label: "О нас", to: "/about" },
@@ -13,8 +14,14 @@ const navItems = [
   { label: "Контакты", to: "/contact" },
 ];
 
+const PALETTES: { id: Palette; label: string; color: string }[] = [
+  { id: "2", label: "Палитра 2", color: "#00897b" },
+  { id: "8", label: "Палитра 8", color: "#1565c0" },
+];
+
 export function TopNav() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { palette, setPalette } = useTheme();
 
   return (
     <header
@@ -78,6 +85,42 @@ export function TopNav() {
               </NavLink>
             ))}
           </nav>
+
+          {/* Palette switcher */}
+          <div
+            className="flex items-center gap-1 px-2 py-1 rounded-xl"
+            style={{
+              background: 'rgba(0,0,0,0.04)',
+              border: '1px solid rgba(0,0,0,0.07)',
+            }}
+          >
+            <span
+              className="text-xs mr-1 hidden sm:block"
+              style={{ color: 'var(--icpw-on-surface-variant)', fontFamily: 'var(--font-body)', fontWeight: 500 }}
+            >
+              Палитра:
+            </span>
+            {PALETTES.map((p) => (
+              <button
+                key={p.id}
+                onClick={() => setPalette(p.id)}
+                title={p.label}
+                className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium transition-all duration-200"
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  background: palette === p.id ? p.color : 'transparent',
+                  color: palette === p.id ? '#ffffff' : 'var(--icpw-on-surface-variant)',
+                  fontWeight: palette === p.id ? 600 : 400,
+                }}
+              >
+                <span
+                  className="w-2.5 h-2.5 rounded-full shrink-0"
+                  style={{ background: p.color, opacity: palette === p.id ? 1 : 0.6 }}
+                />
+                {p.id}
+              </button>
+            ))}
+          </div>
 
           {/* Mobile toggle */}
           <button

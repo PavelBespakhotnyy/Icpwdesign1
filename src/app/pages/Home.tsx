@@ -136,7 +136,7 @@ export function Home() {
               to="/programs/international-certification"
               className="flex items-center gap-2 px-7 py-3.5 rounded-lg text-sm transition-all duration-200"
               style={{
-                background: 'linear-gradient(135deg, #50662b 0%, #455a20 100%)',
+                background: 'linear-gradient(135deg, var(--icpw-primary) 0%, var(--icpw-primary-dim) 100%)',
                 color: '#ffffff',
                 fontFamily: 'var(--font-body)',
                 fontWeight: 500,
@@ -229,7 +229,7 @@ export function Home() {
                 <div
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-lg mb-6 w-fit"
                   style={{
-                    background: 'rgba(80,102,43,0.08)',
+                    background: 'color-mix(in srgb, var(--icpw-primary) 10%, transparent)',
                     color: 'var(--icpw-primary)',
                     fontFamily: 'var(--font-body)',
                     fontSize: '0.85rem',
@@ -259,7 +259,7 @@ export function Home() {
               <div
                 className="relative min-h-[280px] lg:min-h-0"
                 style={{
-                  background: 'linear-gradient(135deg, #50662b 0%, #455a20 100%)',
+                  background: 'linear-gradient(135deg, var(--icpw-primary) 0%, var(--icpw-primary-dim) 100%)',
                   overflow: 'hidden',
                 }}
               >
@@ -345,7 +345,7 @@ export function Home() {
                 >
                   <div
                     className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto"
-                    style={{ background: 'rgba(80,102,43,0.08)' }}
+                    style={{ background: 'color-mix(in srgb, var(--icpw-primary) 10%, transparent)' }}
                   >
                     <Calendar size={18} style={{ color: 'var(--icpw-primary)' }} />
                   </div>

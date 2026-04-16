@@ -4,7 +4,7 @@
   --font-display: 'Manrope', sans-serif;
   --font-body: 'Work Sans', sans-serif;
 
-  /* ICPW Design Tokens */
+  /* ICPW Design Tokens — Палитра 2 (Зелёная, базовая) */
   --icpw-surface: #fafaf5;
   --icpw-surface-low: #f3f4ee;
   --icpw-surface-lowest: #ffffff;
@@ -16,6 +16,36 @@
   --icpw-tertiary: #0e6781;
   --icpw-outline-variant: #afb3ac;
   --icpw-secondary: #516170;
+}
+
+/* Палитра 2 — Бирюзовая */
+.palette-2 {
+  --icpw-surface: #c8e8e6;
+  --icpw-surface-low: #b0dbd8;
+  --icpw-surface-lowest: #e8f5f5;
+  --icpw-surface-highest: #8ec8c4;
+  --icpw-primary: #00897b;
+  --icpw-primary-dim: #00695c;
+  --icpw-on-surface: #1a2e2c;
+  --icpw-on-surface-variant: #3d5c58;
+  --icpw-tertiary: #0277bd;
+  --icpw-outline-variant: #90b4b0;
+  --icpw-secondary: #3d5c58;
+}
+
+/* Палитра 8 — Синяя */
+.palette-8 {
+  --icpw-surface: #f2f5fb;
+  --icpw-surface-low: #e3eaf6;
+  --icpw-surface-lowest: #ffffff;
+  --icpw-surface-highest: #c5d3ea;
+  --icpw-primary: #1565c0;
+  --icpw-primary-dim: #0d47a1;
+  --icpw-on-surface: #1a2030;
+  --icpw-on-surface-variant: #3d4f6a;
+  --icpw-tertiary: #00838f;
+  --icpw-outline-variant: #90a4c0;
+  --icpw-secondary: #3d4f6a;
 }
 
 body {
