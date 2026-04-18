@@ -74,7 +74,6 @@ export function LeftSidebar({ className = "" }: LeftSidebarProps) {
       className={`hidden xl:flex flex-col shrink-0 transition-all duration-300 ${collapsed ? 'w-12' : 'w-60'} ${className}`}
       style={{
         background: 'var(--icpw-surface-low)',
-        minHeight: 'calc(100vh - 64px)',
         position: 'sticky',
         top: '64px',
         height: 'calc(100vh - 64px)',

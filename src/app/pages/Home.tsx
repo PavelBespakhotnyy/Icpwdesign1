@@ -481,7 +481,7 @@ export function Home() {
         {/* ================================================= */}
         {/* 4. CONTACT FORM */}
         {/* ================================================= */}
-        <section className="py-16">
+        <section className="py-16 pb-0">
           <div
             className="rounded-2xl p-8 lg:p-12"
             style={{ background: 'var(--icpw-surface-low)' }}

@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin } from "lucide-react";
 export function Footer() {
   return (
     <footer
-      className="mt-24"
+      className=""
       style={{ background: 'var(--icpw-surface-highest)', color: 'var(--icpw-on-surface)' }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
