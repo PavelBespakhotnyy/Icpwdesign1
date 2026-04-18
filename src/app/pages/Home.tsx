@@ -2,8 +2,7 @@ import { Link } from "react-router";
 import { ArrowRight, Calendar, Play, ChevronRight, ExternalLink } from "lucide-react";
 import { events } from "../data";
 import { ContactFormBlock } from "../components/ContactFormBlock";
-
-const heroImg = "https://images.unsplash.com/photo-1767601047601-beb016409dc0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb3Jlc3QlMjBtaXN0eSUyMG5hdHVyZSUyMGdyZWVuJTIwc2VyZW5lfGVufDF8fHx8MTc3NTE1MzY3MXww&ixlib=rb-4.1.0&q=80&w=1080";
+import heroImg from "../photos/1688164478_kartin-papik-pro-p-kartinki-nebo-listva-45-2420936487.jpg";
 
 const videos = [
   {
@@ -40,20 +39,13 @@ export function Home() {
             src={heroImg}
             alt="Природный фон"
             className="w-full h-full object-cover"
-            style={{ filter: 'brightness(0.55)' }}
+            style={{ filter: 'brightness(0.72) saturate(1.25)' }}
           />
           {/* Radial vignette overlay */}
           <div
             className="absolute inset-0"
             style={{
-              background: 'radial-gradient(ellipse at center, rgba(47,52,46,0.35) 0%, rgba(47,52,46,0.75) 100%)',
-            }}
-          />
-          {/* Bottom fade */}
-          <div
-            className="absolute bottom-0 left-0 right-0 h-40"
-            style={{
-              background: 'linear-gradient(to bottom, transparent, var(--icpw-surface))',
+              background: 'radial-gradient(ellipse at center, rgba(20,40,20,0.2) 0%, rgba(20,40,20,0.6) 100%)',
             }}
           />
         </div>
