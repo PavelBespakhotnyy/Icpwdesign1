@@ -2,7 +2,6 @@ import { Link } from "react-router";
 import { ArrowRight, Calendar, Play, ChevronRight, ExternalLink } from "lucide-react";
 import { events } from "../data";
 import { ContactFormBlock } from "../components/ContactFormBlock";
-import icpwLogoHero from "../photos/icpw-logo-hero.png";
 
 const videos = [
   {
@@ -32,14 +31,176 @@ export function Home() {
   return (
     <div>
       {/* HERO SECTION */}
-      <section className="flex flex-col items-center justify-center overflow-hidden" style={{ background: '#ffffff' }}>
-        {/* Logo as full-width hero — clip bottom white space of the PNG (image is 1270x714, content ends ~y540) */}
-        <div style={{ width: '100%', aspectRatio: '1270 / 540', overflow: 'hidden' }}>
-          <img
-            src={icpwLogoHero}
-            alt="ICPW — International Center for Process Work"
-            style={{ display: 'block', width: '100%' }}
-          />
+      <section className="flex flex-col items-center justify-center overflow-hidden">
+
+        {/* ── Typographic Hero Block (same size as the old photo) ── */}
+        <div style={{
+          width: '100%', aspectRatio: '1270 / 540', overflow: 'hidden', position: 'relative',
+          background: [
+            'radial-gradient(ellipse at 12% 20%, color-mix(in srgb, var(--icpw-tertiary) 40%, transparent) 0%, transparent 52%)',
+            'radial-gradient(ellipse at 90% 15%, color-mix(in srgb, var(--icpw-primary) 38%, transparent) 0%, transparent 50%)',
+            'radial-gradient(ellipse at 75% 90%, color-mix(in srgb, var(--icpw-tertiary) 34%, transparent) 0%, transparent 48%)',
+            'radial-gradient(ellipse at 15% 85%, color-mix(in srgb, var(--icpw-primary) 32%, transparent) 0%, transparent 46%)',
+            'radial-gradient(ellipse at 52% 5%,  color-mix(in srgb, var(--icpw-primary-dim) 26%, transparent) 0%, transparent 42%)',
+            'radial-gradient(ellipse at 50% 96%, color-mix(in srgb, var(--icpw-tertiary) 28%, transparent) 0%, transparent 44%)',
+            'radial-gradient(ellipse at 2%  50%, color-mix(in srgb, var(--icpw-secondary) 20%, transparent) 0%, transparent 36%)',
+            'radial-gradient(ellipse at 98% 50%, color-mix(in srgb, var(--icpw-secondary) 18%, transparent) 0%, transparent 36%)',
+            'var(--icpw-surface-lowest)',
+          ].join(', '),
+        }}>
+
+          {/* Compass reticle – left */}
+          <svg
+            viewBox="0 0 200 200"
+            style={{
+              position: 'absolute',
+              width: '40%', aspectRatio: '1',
+              top: '50%', left: '-10%',
+              transform: 'translateY(-50%)',
+              pointerEvents: 'none',
+              overflow: 'visible',
+              opacity: 0.32,
+            }}
+            aria-hidden="true"
+          >
+            <g stroke="var(--icpw-primary)" fill="none">
+              <circle cx="100" cy="100" r="95" strokeWidth="1" />
+              <circle cx="100" cy="100" r="63" strokeWidth="0.75" />
+              <circle cx="100" cy="100" r="31" strokeWidth="0.75" />
+              <line x1="5" y1="100" x2="195" y2="100" strokeWidth="0.5" />
+              <line x1="100" y1="5" x2="100" y2="195" strokeWidth="0.5" />
+              {Array.from({ length: 12 }, (_, i) => {
+                const a = (i * 30 - 90) * Math.PI / 180;
+                const major = i % 3 === 0;
+                return (
+                  <line
+                    key={i}
+                    x1={100 + 95 * Math.cos(a)} y1={100 + 95 * Math.sin(a)}
+                    x2={100 + (major ? 84 : 89) * Math.cos(a)}
+                    y2={100 + (major ? 84 : 89) * Math.sin(a)}
+                    strokeWidth={major ? 1.5 : 0.75}
+                  />
+                );
+              })}
+            </g>
+            <g fill="var(--icpw-primary)">
+              <circle cx="100" cy="5"   r="2.5" />
+              <circle cx="195" cy="100" r="2.5" />
+              <circle cx="100" cy="195" r="2.5" />
+              <circle cx="5"   cy="100" r="2.5" />
+              <circle cx="100" cy="100" r="3.5" />
+            </g>
+          </svg>
+
+          {/* Compass reticle – right */}
+          <svg
+            viewBox="0 0 200 200"
+            style={{
+              position: 'absolute',
+              width: '26%', aspectRatio: '1',
+              top: '50%', right: '-6%',
+              transform: 'translateY(-50%)',
+              pointerEvents: 'none',
+              overflow: 'visible',
+              opacity: 0.28,
+            }}
+            aria-hidden="true"
+          >
+            <g stroke="var(--icpw-tertiary)" fill="none">
+              <circle cx="100" cy="100" r="95" strokeWidth="1" />
+              <circle cx="100" cy="100" r="52" strokeWidth="0.75" />
+              <line x1="33" y1="33" x2="167" y2="167" strokeWidth="0.5" />
+              <line x1="167" y1="33" x2="33" y2="167" strokeWidth="0.5" />
+              {Array.from({ length: 8 }, (_, i) => {
+                const a = (i * 45 - 90) * Math.PI / 180;
+                return (
+                  <line
+                    key={i}
+                    x1={100 + 95 * Math.cos(a)} y1={100 + 95 * Math.sin(a)}
+                    x2={100 + (i % 2 === 0 ? 84 : 89) * Math.cos(a)}
+                    y2={100 + (i % 2 === 0 ? 84 : 89) * Math.sin(a)}
+                    strokeWidth={i % 2 === 0 ? 1.5 : 0.75}
+                  />
+                );
+              })}
+            </g>
+            <g fill="var(--icpw-tertiary)">
+              <circle cx="100" cy="5"   r="2.5" />
+              <circle cx="195" cy="100" r="2.5" />
+              <circle cx="100" cy="195" r="2.5" />
+              <circle cx="5"   cy="100" r="2.5" />
+              <circle cx="100" cy="100" r="3" />
+            </g>
+          </svg>
+
+          {/* ── Text – matching original logo layout ── */}
+          <div style={{
+            position: 'absolute', inset: 0,
+            display: 'flex', flexDirection: 'column',
+            alignItems: 'center', justifyContent: 'center',
+            padding: '0 6%',
+          }}>
+            {/* ICPW */}
+            <div style={{
+              fontFamily: '"Times New Roman", Times, serif',
+              fontSize: 'clamp(3rem, 10.5vw, 8.5rem)',
+              fontWeight: 400,
+              color: 'var(--icpw-primary)',
+              letterSpacing: '0.03em',
+              lineHeight: 1,
+              textAlign: 'center',
+            }}>
+              ICPW
+            </div>
+
+            {/* Horizontal rule */}
+            <div style={{
+              width: 'clamp(180px, 48%, 500px)',
+              height: '2px',
+              background: 'var(--icpw-primary)',
+              margin: '0.45rem 0 0.4rem',
+              opacity: 0.65,
+            }} />
+
+            {/* Process Work */}
+            <div style={{
+              fontFamily: '"Times New Roman", Times, serif',
+              fontSize: 'clamp(1.4rem, 4.5vw, 3.8rem)',
+              fontWeight: 400,
+              color: 'var(--icpw-primary)',
+              letterSpacing: '0.02em',
+              lineHeight: 1.15,
+              textAlign: 'center',
+              marginBottom: 'clamp(0.6rem, 1.8vw, 1.4rem)',
+            }}>
+              Process Work
+            </div>
+
+            {/* Russian subtitle */}
+            <div style={{
+              fontFamily: '"Times New Roman", Times, serif',
+              fontSize: 'clamp(0.6rem, 1.3vw, 1rem)',
+              fontWeight: 700,
+              color: 'var(--icpw-primary)',
+              textAlign: 'center',
+              lineHeight: 1.5,
+            }}>
+              Международный Центр Процессуальной Работы
+            </div>
+
+            {/* English subtitle */}
+            <div style={{
+              fontFamily: '"Times New Roman", Times, serif',
+              fontSize: 'clamp(0.58rem, 1.2vw, 0.95rem)',
+              fontWeight: 700,
+              color: 'var(--icpw-primary)',
+              textAlign: 'center',
+              lineHeight: 1.5,
+              marginTop: '0.2rem',
+            }}>
+              International Center for Process Work
+            </div>
+          </div>
         </div>
 
         {/* CTA */}
@@ -388,13 +549,74 @@ export function Home() {
           </div>
         </section>
 
-        {/* ================================================= */}
-        {/* 4. CONTACT FORM */}
-        {/* ================================================= */}
-        <section className="py-16 pb-0">
+      </div>{/* /max-w-5xl */}
+
+      {/* ================================================= */}
+      {/* 4. CONTACT FORM — full width */}
+      {/* ================================================= */}
+      <section
+        className="py-20 pb-14"
+        style={{
+          position: 'relative',
+          overflow: 'hidden',
+          background: `
+            radial-gradient(ellipse at 93% 8%,  color-mix(in srgb, var(--icpw-tertiary)  40%, transparent) 0%, transparent 52%),
+            radial-gradient(ellipse at 5%  90%, color-mix(in srgb, var(--icpw-primary)   34%, transparent) 0%, transparent 48%),
+            radial-gradient(ellipse at 50% 50%, color-mix(in srgb, var(--icpw-secondary) 16%, transparent) 0%, transparent 58%),
+            var(--icpw-surface-lowest)
+          `,
+        }}
+      >
+        {/* Noise texture */}
+        <svg
+          style={{
+            position: 'absolute', inset: 0,
+            width: '100%', height: '100%',
+            pointerEvents: 'none', zIndex: 0,
+            mixBlendMode: 'overlay', opacity: 0.24,
+          }}
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <filter id="contact-grain">
+            <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch" />
+            <feColorMatrix type="saturate" values="0" />
+          </filter>
+          <rect width="100%" height="100%" filter="url(#contact-grain)" />
+        </svg>
+
+        {/* Concentric arcs – top-right */}
+        <svg
+          style={{ position: 'absolute', top: 0, right: 0, overflow: 'visible', pointerEvents: 'none', opacity: 0.22, zIndex: 0 }}
+          width="300" height="260" viewBox="0 0 300 260"
+          aria-hidden="true"
+        >
+          {[55, 96, 137, 178, 219, 260, 301].map(r => (
+            <circle key={r} cx="300" cy="0" r={r} fill="none" stroke="var(--icpw-tertiary)" strokeWidth="1.5" />
+          ))}
+        </svg>
+
+        {/* Dot grid – bottom-left */}
+        <svg
+          style={{ position: 'absolute', bottom: '28px', left: '28px', pointerEvents: 'none', opacity: 0.18, zIndex: 0 }}
+          width="160" height="130" viewBox="0 0 160 130"
+          aria-hidden="true"
+        >
+          {Array.from({ length: 8 }, (_, row) =>
+            Array.from({ length: 10 }, (_, col) => (
+              <circle key={`${row}-${col}`} cx={col * 16 + 8} cy={row * 16 + 8} r="2" fill="var(--icpw-primary)" />
+            ))
+          )}
+        </svg>
+
+        {/* Card – constrained width */}
+        <div className="max-w-5xl mx-auto px-6 lg:px-10" style={{ position: 'relative', zIndex: 1 }}>
           <div
             className="rounded-2xl p-8 lg:p-12"
-            style={{ background: 'var(--icpw-surface-low)' }}
+            style={{
+              background: 'var(--icpw-surface-lowest)',
+              boxShadow: '0 8px 48px rgba(0,0,0,0.09)',
+            }}
           >
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
               <div className="lg:col-span-2">
@@ -429,9 +651,8 @@ export function Home() {
               </div>
             </div>
           </div>
-        </section>
-
-      </div>
+        </div>
+      </section>
     </div>
   );
 }
