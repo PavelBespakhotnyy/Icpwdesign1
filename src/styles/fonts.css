@@ -33,6 +33,36 @@
   --icpw-secondary: #3d5c58;
 }
 
+/* Палитра 3 — Голубая с жёлтым акцентом */
+.palette-3 {
+  --icpw-surface: #78d1e0;
+  --icpw-surface-low: #5ec4d5;
+  --icpw-surface-lowest: #fdf7e9;
+  --icpw-surface-highest: #4ab5c8;
+  --icpw-primary: #f9ce00;
+  --icpw-primary-dim: #e0b800;
+  --icpw-on-surface: #100507;
+  --icpw-on-surface-variant: #2a1015;
+  --icpw-tertiary: #100507;
+  --icpw-outline-variant: #5a3a3e;
+  --icpw-secondary: #2a1015;
+}
+
+/* Палитра 4 — Сине-зелёная (смесь 2 и 8, нейтральная) */
+.palette-4 {
+  --icpw-surface: #f4f7f5;
+  --icpw-surface-low: #e8eeed;
+  --icpw-surface-lowest: #ffffff;
+  --icpw-surface-highest: #d2dbd8;
+  --icpw-primary: #2e6b78;
+  --icpw-primary-dim: #225860;
+  --icpw-on-surface: #1e2a28;
+  --icpw-on-surface-variant: #4a5c5a;
+  --icpw-tertiary: #3a6e5c;
+  --icpw-outline-variant: #9ab0ac;
+  --icpw-secondary: #4a5c5a;
+}
+
 /* Палитра 8 — Синяя */
 .palette-8 {
   --icpw-surface: #f2f5fb;

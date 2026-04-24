@@ -1,12 +1,48 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link, NavLink } from "react-router";
-import { Menu, X } from "lucide-react";
+import { Menu, X, GraduationCap, Heart, BookOpen, ChevronDown } from "lucide-react";
 import { Logo } from "./Logo";
 import { useTheme, type Palette } from "../context/ThemeContext";
 
+const PALETTES: { id: Palette; label: string; color: string }[] = [
+  { id: "2", label: "Палитра 2", color: "#00897b" },
+  { id: "8", label: "Палитра 8", color: "#1565c0" },
+  { id: "3", label: "Палитра 3", color: "#f9ce00" },
+  { id: "4", label: "Палитра 4", color: "#2e6b78" },
+];
+
+const sidebarSections = [
+  {
+    label: "Образовательные программы",
+    icon: <GraduationCap size={15} />,
+    links: [
+      { to: "/programs/international-certification", label: "Международная сертификация" },
+      { to: "/programs/retraining", label: "Переподготовка" },
+      { to: "/programs/advancement", label: "Повышение квалификации" },
+      { to: "/programs/documents", label: "Выдаваемые документы" },
+      { to: "/programs/certification-terms", label: "Условия сертификации" },
+    ],
+  },
+  {
+    label: "Личная терапия и супервизия",
+    icon: <Heart size={15} />,
+    links: [
+      { to: "/therapy", label: "Рекомендуемые терапевты" },
+      { to: "/therapy#supervision", label: "Супервизия" },
+    ],
+  },
+  {
+    label: "О процессуальной работе",
+    icon: <BookOpen size={15} />,
+    links: [
+      { to: "/about-process-work", label: "Что такое Process Work?" },
+      { to: "/about-process-work#videos", label: "Полезные видео" },
+    ],
+  },
+];
+
 const navItems = [
   { label: "О нас", to: "/about" },
-  { label: "Наши программы", to: "/programs" },
   { label: "Наши преподаватели", to: "/teachers" },
   { label: "Отзывы", to: "/reviews" },
   { label: "Библиотека", to: "/library" },
@@ -14,10 +50,100 @@ const navItems = [
   { label: "Контакты", to: "/contact" },
 ];
 
-const PALETTES: { id: Palette; label: string; color: string }[] = [
-  { id: "2", label: "Палитра 2", color: "#00897b" },
-  { id: "8", label: "Палитра 8", color: "#1565c0" },
-];
+function SectionsDropdown() {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex items-center gap-1 px-3 py-2 text-sm rounded-lg transition-all duration-200"
+        style={{
+          fontFamily: 'var(--font-body)',
+          fontWeight: 500,
+          color: open ? 'var(--icpw-primary)' : 'var(--icpw-on-surface-variant)',
+          background: open ? 'color-mix(in srgb, var(--icpw-primary) 8%, transparent)' : 'transparent',
+          textDecoration: 'none',
+        }}
+      >
+        Разделы
+        <ChevronDown
+          size={14}
+          style={{
+            transition: 'transform 0.2s',
+            transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
+          }}
+        />
+      </button>
+
+      {open && (
+        <div
+          className="absolute left-0 top-full mt-2 rounded-xl shadow-xl z-50"
+          style={{
+            background: 'var(--icpw-surface-lowest)',
+            border: '1px solid rgba(175,179,172,0.2)',
+            minWidth: '580px',
+            padding: '16px',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '8px',
+          }}
+        >
+          {sidebarSections.map((section) => (
+            <div key={section.label}>
+              <div
+                className="flex items-center gap-2 px-2 pb-2 mb-1"
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.75rem',
+                  fontWeight: 700,
+                  color: 'var(--icpw-on-surface)',
+                  borderBottom: '1px solid rgba(175,179,172,0.2)',
+                }}
+              >
+                <span style={{ color: 'var(--icpw-primary)' }}>{section.icon}</span>
+                {section.label}
+              </div>
+              <div className="space-y-0.5">
+                {section.links.map((link) => (
+                  <NavLink
+                    key={link.to}
+                    to={link.to}
+                    onClick={() => setOpen(false)}
+                    className={({ isActive }) =>
+                      `block px-2 py-1.5 rounded-lg text-xs transition-all duration-150 ${
+                        isActive
+                          ? 'font-medium'
+                          : 'hover:bg-[rgba(0,0,0,0.04)]'
+                      }`
+                    }
+                    style={({ isActive }) => ({
+                      fontFamily: 'var(--font-body)',
+                      textDecoration: 'none',
+                      color: isActive ? 'var(--icpw-primary)' : 'var(--icpw-on-surface-variant)',
+                      background: isActive ? 'color-mix(in srgb, var(--icpw-primary) 8%, transparent)' : undefined,
+                    })}
+                  >
+                    {link.label}
+                  </NavLink>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export function TopNav() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -35,7 +161,7 @@ export function TopNav() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo (compact in nav) */}
+          {/* Logo */}
           <Link
             to="/"
             className="flex items-center gap-2 shrink-0"
@@ -59,7 +185,7 @@ export function TopNav() {
                 fontFamily: 'var(--font-display)',
                 color: 'var(--icpw-on-surface-variant)',
                 letterSpacing: '0.2em',
-                paddingTop: '2px'
+                paddingTop: '2px',
               }}
             >
               PROCESS WORK
@@ -75,11 +201,17 @@ export function TopNav() {
                 className={({ isActive }) =>
                   `px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
                     isActive
-                      ? 'text-[#50662b] bg-[#50662b]/8'
-                      : 'text-[#5c605a] hover:text-[#2f342e] hover:bg-[#f3f4ee]'
+                      ? 'font-medium'
+                      : 'hover:bg-[rgba(0,0,0,0.04)]'
                   }`
                 }
-                style={{ fontFamily: 'var(--font-body)', textDecoration: 'none', fontWeight: 500 }}
+                style={({ isActive }) => ({
+                  fontFamily: 'var(--font-body)',
+                  textDecoration: 'none',
+                  fontWeight: isActive ? 600 : 500,
+                  color: isActive ? 'var(--icpw-primary)' : 'var(--icpw-on-surface-variant)',
+                  background: isActive ? 'color-mix(in srgb, var(--icpw-primary) 8%, transparent)' : undefined,
+                })}
               >
                 {item.label}
               </NavLink>
@@ -88,14 +220,14 @@ export function TopNav() {
 
           {/* Palette switcher */}
           <div
-            className="flex items-center gap-1 px-2 py-1 rounded-xl"
+            className="hidden sm:flex items-center gap-1 px-2 py-1 rounded-xl"
             style={{
               background: 'rgba(0,0,0,0.04)',
               border: '1px solid rgba(0,0,0,0.07)',
             }}
           >
             <span
-              className="text-xs mr-1 hidden sm:block"
+              className="text-xs mr-1"
               style={{ color: 'var(--icpw-on-surface-variant)', fontFamily: 'var(--font-body)', fontWeight: 500 }}
             >
               Палитра:
@@ -143,23 +275,66 @@ export function TopNav() {
             borderColor: 'rgba(175,179,172,0.2)',
           }}
         >
-          {navItems.map((item) => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              onClick={() => setMobileOpen(false)}
-              className={({ isActive }) =>
-                `block px-4 py-2.5 rounded-lg text-sm transition-all ${
-                  isActive
-                    ? 'text-[#50662b] bg-[#50662b]/8 font-medium'
-                    : 'text-[#5c605a] hover:text-[#2f342e] hover:bg-[#f3f4ee]'
-                }`
-              }
-              style={{ fontFamily: 'var(--font-body)', textDecoration: 'none' }}
-            >
-              {item.label}
-            </NavLink>
+          {/* Sidebar sections in mobile */}
+          {sidebarSections.map((section) => (
+            <div key={section.label} className="pb-2">
+              <div
+                className="flex items-center gap-2 px-2 py-1 mb-1"
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.7rem',
+                  fontWeight: 700,
+                  color: 'var(--icpw-on-surface)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                }}
+              >
+                <span style={{ color: 'var(--icpw-primary)' }}>{section.icon}</span>
+                {section.label}
+              </div>
+              {section.links.map((link) => (
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  onClick={() => setMobileOpen(false)}
+                  className={({ isActive }) =>
+                    `block px-4 py-2 rounded-lg text-sm transition-all ${
+                      isActive ? 'font-medium' : 'hover:bg-[rgba(0,0,0,0.04)]'
+                    }`
+                  }
+                  style={({ isActive }) => ({
+                    fontFamily: 'var(--font-body)',
+                    textDecoration: 'none',
+                    color: isActive ? 'var(--icpw-primary)' : 'var(--icpw-on-surface-variant)',
+                  })}
+                >
+                  {link.label}
+                </NavLink>
+              ))}
+            </div>
           ))}
+
+          <div style={{ borderTop: '1px solid rgba(175,179,172,0.2)', marginTop: '8px', paddingTop: '8px' }}>
+            {navItems.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                onClick={() => setMobileOpen(false)}
+                className={({ isActive }) =>
+                  `block px-4 py-2.5 rounded-lg text-sm transition-all ${
+                    isActive ? 'font-medium' : 'hover:bg-[rgba(0,0,0,0.04)]'
+                  }`
+                }
+                style={({ isActive }) => ({
+                  fontFamily: 'var(--font-body)',
+                  textDecoration: 'none',
+                  color: isActive ? 'var(--icpw-primary)' : 'var(--icpw-on-surface-variant)',
+                })}
+              >
+                {item.label}
+              </NavLink>
+            ))}
+          </div>
         </div>
       )}
     </header>

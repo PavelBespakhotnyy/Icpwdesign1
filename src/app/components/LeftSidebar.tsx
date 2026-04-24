@@ -7,25 +7,24 @@ interface SidebarSectionProps {
   icon: React.ReactNode;
   children: React.ReactNode;
   defaultOpen?: boolean;
+  topLink?: { to: string; label: string };
 }
 
-function SidebarSection({ label, icon, children, defaultOpen = false }: SidebarSectionProps) {
+function SidebarSection({ label, icon, children, defaultOpen = false, topLink }: SidebarSectionProps) {
   const [open, setOpen] = useState(defaultOpen);
   return (
     <div className="mb-1">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-left transition-all duration-200 group"
+        className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-left transition-all duration-200"
         style={{
           fontFamily: 'var(--font-body)',
           fontSize: '0.8rem',
           fontWeight: 600,
           color: 'var(--icpw-on-surface)',
           letterSpacing: '0.02em',
-          background: open ? 'rgba(80,102,43,0.07)' : 'transparent',
+          background: open ? 'color-mix(in srgb, var(--icpw-primary) 8%, transparent)' : 'transparent',
         }}
-        onMouseEnter={e => { if (!open) (e.currentTarget as HTMLElement).style.background = 'rgba(80,102,43,0.05)'; }}
-        onMouseLeave={e => { if (!open) (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
       >
         <span className="flex items-center gap-2">
           <span style={{ color: 'var(--icpw-primary)', opacity: 0.8 }}>{icon}</span>
@@ -35,8 +34,27 @@ function SidebarSection({ label, icon, children, defaultOpen = false }: SidebarS
           {open ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
         </span>
       </button>
+
       {open && (
         <div className="pl-2 mt-1 space-y-0.5">
+          {topLink && (
+            <NavLink
+              to={topLink.to}
+              className={({ isActive }) =>
+                `block px-3 py-2 rounded-lg text-xs transition-all duration-150 font-medium ${
+                  isActive ? '' : 'hover:bg-[rgba(0,0,0,0.04)]'
+                }`
+              }
+              style={({ isActive }) => ({
+                fontFamily: 'var(--font-body)',
+                textDecoration: 'none',
+                color: isActive ? 'var(--icpw-primary)' : 'var(--icpw-on-surface)',
+                background: isActive ? 'color-mix(in srgb, var(--icpw-primary) 8%, transparent)' : undefined,
+              })}
+            >
+              {topLink.label}
+            </NavLink>
+          )}
           {children}
         </div>
       )}
@@ -50,28 +68,28 @@ function SidebarLink({ to, label }: { to: string; label: string }) {
       to={to}
       className={({ isActive }) =>
         `block px-3 py-2 rounded-lg text-xs transition-all duration-150 ${
-          isActive
-            ? 'text-[#50662b] bg-[#50662b]/10 font-medium'
-            : 'text-[#5c605a] hover:text-[#2f342e] hover:bg-[#f3f4ee]'
+          isActive ? '' : 'hover:bg-[rgba(0,0,0,0.04)]'
         }`
       }
-      style={{ fontFamily: 'var(--font-body)', textDecoration: 'none' }}
+      style={({ isActive }) => ({
+        fontFamily: 'var(--font-body)',
+        textDecoration: 'none',
+        color: isActive ? 'var(--icpw-primary)' : 'var(--icpw-on-surface-variant)',
+        background: isActive ? 'color-mix(in srgb, var(--icpw-primary) 8%, transparent)' : undefined,
+        fontWeight: isActive ? 500 : 400,
+      })}
     >
       {label}
     </NavLink>
   );
 }
 
-interface LeftSidebarProps {
-  className?: string;
-}
-
-export function LeftSidebar({ className = "" }: LeftSidebarProps) {
+export function LeftSidebar({ className = "" }: { className?: string }) {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
     <aside
-      className={`hidden xl:flex flex-col shrink-0 transition-all duration-300 ${collapsed ? 'w-12' : 'w-60'} ${className}`}
+      className={`hidden xl:flex flex-col shrink-0 transition-all duration-300 ${collapsed ? 'w-12' : 'w-64'} ${className}`}
       style={{
         background: 'var(--icpw-surface-low)',
         position: 'sticky',
@@ -81,7 +99,6 @@ export function LeftSidebar({ className = "" }: LeftSidebarProps) {
         overflowX: 'hidden',
       }}
     >
-      {/* Collapse toggle */}
       <div className="flex justify-end p-2">
         <button
           onClick={() => setCollapsed(!collapsed)}
@@ -95,47 +112,30 @@ export function LeftSidebar({ className = "" }: LeftSidebarProps) {
 
       {!collapsed && (
         <nav className="px-3 pb-8 flex flex-col gap-1">
-          {/* Label */}
-          <div
-            className="px-3 mb-2 uppercase tracking-widest"
-            style={{
-              fontSize: '0.65rem',
-              color: 'var(--icpw-outline-variant)',
-              fontFamily: 'var(--font-body)',
-              fontWeight: 600,
-            }}
-          >
-            Навигация
-          </div>
-
-          {/* Образовательные программы */}
           <SidebarSection
             label="Образовательные программы"
             icon={<GraduationCap size={15} />}
             defaultOpen={true}
+            topLink={{ to: "/programs/international-certification", label: "Описание программы" }}
           >
-            <SidebarLink to="/programs/international-certification" label="Международная сертификация" />
             <SidebarLink to="/programs/retraining" label="Переподготовка" />
             <SidebarLink to="/programs/advancement" label="Повышение квалификации" />
             <SidebarLink to="/programs/documents" label="Выдаваемые документы" />
             <SidebarLink to="/programs/certification-terms" label="Условия сертификации" />
           </SidebarSection>
 
-          {/* Личная терапия */}
           <SidebarSection
             label="Личная терапия и супервизия"
             icon={<Heart size={15} />}
           >
             <SidebarLink to="/therapy" label="Рекомендуемые терапевты" />
-            <SidebarLink to="/therapy#supervision" label="Супервизия" />
+            <SidebarLink to="/graduates" label="Наши выпускники" />
           </SidebarSection>
 
-          {/* О процессуальной работе */}
           <SidebarSection
             label="О процессуальной работе"
             icon={<BookOpen size={15} />}
           >
-            <SidebarLink to="/about-process-work" label="Что такое Process Work?" />
             <SidebarLink to="/about-process-work#videos" label="Полезные видео" />
           </SidebarSection>
         </nav>

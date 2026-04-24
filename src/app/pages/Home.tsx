@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import { ArrowRight, Calendar, Play, ChevronRight, ExternalLink } from "lucide-react";
 import { events } from "../data";
 import { ContactFormBlock } from "../components/ContactFormBlock";
-import heroImg from "../photos/1688164478_kartin-papik-pro-p-kartinki-nebo-listva-45-2420936487.jpg";
+import icpwLogoHero from "../photos/icpw-logo-hero.png";
 
 const videos = [
   {
@@ -32,136 +32,46 @@ export function Home() {
   return (
     <div>
       {/* HERO SECTION */}
-      <section className="relative min-h-[88vh] flex flex-col items-center justify-center overflow-hidden">
-        {/* Background image */}
-        <div className="absolute inset-0">
+      <section className="flex flex-col items-center justify-center overflow-hidden" style={{ background: '#ffffff' }}>
+        {/* Logo as full-width hero — clip bottom white space of the PNG (image is 1270x714, content ends ~y540) */}
+        <div style={{ width: '100%', aspectRatio: '1270 / 540', overflow: 'hidden' }}>
           <img
-            src={heroImg}
-            alt="Природный фон"
-            className="w-full h-full object-cover"
-            style={{ filter: 'brightness(0.72) saturate(1.25)' }}
-          />
-          {/* Radial vignette overlay */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background: 'radial-gradient(ellipse at center, rgba(20,40,20,0.2) 0%, rgba(20,40,20,0.6) 100%)',
-            }}
+            src={icpwLogoHero}
+            alt="ICPW — International Center for Process Work"
+            style={{ display: 'block', width: '100%' }}
           />
         </div>
 
-        {/* Hero content */}
-        <div className="relative z-10 flex flex-col items-center text-center px-6 py-20">
-          {/* ICPW Logo */}
-          <div
-            className="mb-4 tracking-[0.25em]"
+        {/* CTA */}
+        <div className="flex flex-col sm:flex-row gap-3 pb-12 pt-2">
+          <Link
+            to="/programs/international-certification"
+            className="flex items-center gap-2 px-7 py-3.5 rounded-lg text-sm transition-all duration-200"
             style={{
-              fontFamily: 'var(--font-display)',
-              fontWeight: 800,
-              fontSize: 'clamp(4rem, 12vw, 8rem)',
+              background: 'linear-gradient(135deg, var(--icpw-primary) 0%, var(--icpw-primary-dim) 100%)',
               color: '#ffffff',
-              letterSpacing: '0.2em',
-              lineHeight: 1,
-              textShadow: '0 4px 40px rgba(0,0,0,0.3)',
-            }}
-          >
-            ICPW
-          </div>
-
-          {/* Decorative line */}
-          <div
-            className="mb-5"
-            style={{
-              width: '80px',
-              height: '2px',
-              background: 'linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.8), rgba(255,255,255,0.3))',
-              borderRadius: '1px',
-            }}
-          />
-
-          {/* Process Work */}
-          <div
-            className="mb-3 tracking-[0.4em] uppercase"
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontWeight: 400,
-              fontSize: 'clamp(0.8rem, 2vw, 1.1rem)',
-              color: 'rgba(255,255,255,0.9)',
-              letterSpacing: '0.4em',
-            }}
-          >
-            Process Work
-          </div>
-
-          {/* Russian name */}
-          <h1
-            className="mb-2"
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontWeight: 500,
-              fontSize: 'clamp(1rem, 2.5vw, 1.4rem)',
-              color: 'rgba(255,255,255,0.85)',
-              letterSpacing: '0.05em',
-            }}
-          >
-            Международный Центр Процессуальной Работы
-          </h1>
-
-          {/* English name */}
-          <p
-            className="mb-10"
-            style={{
               fontFamily: 'var(--font-body)',
-              fontWeight: 300,
-              fontSize: 'clamp(0.75rem, 1.5vw, 0.95rem)',
-              color: 'rgba(255,255,255,0.6)',
-              letterSpacing: '0.1em',
-              fontStyle: 'italic',
+              fontWeight: 500,
+              textDecoration: 'none',
             }}
           >
-            International Centre of Process Work
-          </p>
-
-          {/* CTA */}
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Link
-              to="/programs/international-certification"
-              className="flex items-center gap-2 px-7 py-3.5 rounded-lg text-sm transition-all duration-200"
-              style={{
-                background: 'linear-gradient(135deg, var(--icpw-primary) 0%, var(--icpw-primary-dim) 100%)',
-                color: '#ffffff',
-                fontFamily: 'var(--font-body)',
-                fontWeight: 500,
-                textDecoration: 'none',
-              }}
-            >
-              Поступить на программу
-              <ArrowRight size={15} />
-            </Link>
-            <Link
-              to="/about"
-              className="flex items-center gap-2 px-7 py-3.5 rounded-lg text-sm transition-all duration-200"
-              style={{
-                background: 'rgba(255,255,255,0.12)',
-                color: '#ffffff',
-                fontFamily: 'var(--font-body)',
-                fontWeight: 500,
-                textDecoration: 'none',
-                border: '1px solid rgba(255,255,255,0.25)',
-                backdropFilter: 'blur(8px)',
-              }}
-            >
-              Узнать о нас
-            </Link>
-          </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
-          <div
-            className="w-[1px] h-12 animate-pulse"
-            style={{ background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.6))' }}
-          />
+            Поступить на программу
+            <ArrowRight size={15} />
+          </Link>
+          <Link
+            to="/about"
+            className="flex items-center gap-2 px-7 py-3.5 rounded-lg text-sm transition-all duration-200"
+            style={{
+              background: 'transparent',
+              color: 'var(--icpw-primary)',
+              fontFamily: 'var(--font-body)',
+              fontWeight: 600,
+              textDecoration: 'none',
+              border: '2px solid var(--icpw-primary)',
+            }}
+          >
+            Узнать о нас
+          </Link>
         </div>
       </section>
 

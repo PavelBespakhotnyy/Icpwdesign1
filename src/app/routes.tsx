@@ -13,6 +13,7 @@ import { Contact } from "./pages/Contact";
 import { Therapy } from "./pages/Therapy";
 import { AboutProcessWork } from "./pages/AboutProcessWork";
 import { Events } from "./pages/Events";
+import { Graduates } from "./pages/Graduates";
 
 function NotFound() {
   return (
@@ -71,6 +72,7 @@ export const router = createHashRouter([
       { path: "therapy", Component: Therapy },
       { path: "about-process-work", Component: AboutProcessWork },
       { path: "events", Component: Events },
+      { path: "graduates", Component: Graduates },
       { path: "*", Component: NotFound },
     ],
   },
