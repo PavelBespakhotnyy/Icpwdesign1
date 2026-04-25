@@ -37,102 +37,8 @@ export function Home() {
         {/* ── Typographic Hero Block (same size as the old photo) ── */}
         <div style={{
           width: '100%', aspectRatio: '1270 / 540', overflow: 'hidden', position: 'relative',
-          background: [
-            'radial-gradient(ellipse at 12% 20%, color-mix(in srgb, var(--icpw-tertiary) 40%, transparent) 0%, transparent 52%)',
-            'radial-gradient(ellipse at 90% 15%, color-mix(in srgb, var(--icpw-primary) 38%, transparent) 0%, transparent 50%)',
-            'radial-gradient(ellipse at 75% 90%, color-mix(in srgb, var(--icpw-tertiary) 34%, transparent) 0%, transparent 48%)',
-            'radial-gradient(ellipse at 15% 85%, color-mix(in srgb, var(--icpw-primary) 32%, transparent) 0%, transparent 46%)',
-            'radial-gradient(ellipse at 52% 5%,  color-mix(in srgb, var(--icpw-primary-dim) 26%, transparent) 0%, transparent 42%)',
-            'radial-gradient(ellipse at 50% 96%, color-mix(in srgb, var(--icpw-tertiary) 28%, transparent) 0%, transparent 44%)',
-            'radial-gradient(ellipse at 2%  50%, color-mix(in srgb, var(--icpw-secondary) 20%, transparent) 0%, transparent 36%)',
-            'radial-gradient(ellipse at 98% 50%, color-mix(in srgb, var(--icpw-secondary) 18%, transparent) 0%, transparent 36%)',
-            'var(--icpw-surface-lowest)',
-          ].join(', '),
+          backgroundColor: 'var(--icpw-surface)',
         }}>
-
-          {/* Compass reticle – left */}
-          <svg
-            viewBox="0 0 200 200"
-            style={{
-              position: 'absolute',
-              width: '40%', aspectRatio: '1',
-              top: '50%', left: '-10%',
-              transform: 'translateY(-50%)',
-              pointerEvents: 'none',
-              overflow: 'visible',
-              opacity: 0.32,
-            }}
-            aria-hidden="true"
-          >
-            <g stroke="var(--icpw-primary)" fill="none">
-              <circle cx="100" cy="100" r="95" strokeWidth="1" />
-              <circle cx="100" cy="100" r="63" strokeWidth="0.75" />
-              <circle cx="100" cy="100" r="31" strokeWidth="0.75" />
-              <line x1="5" y1="100" x2="195" y2="100" strokeWidth="0.5" />
-              <line x1="100" y1="5" x2="100" y2="195" strokeWidth="0.5" />
-              {Array.from({ length: 12 }, (_, i) => {
-                const a = (i * 30 - 90) * Math.PI / 180;
-                const major = i % 3 === 0;
-                return (
-                  <line
-                    key={i}
-                    x1={100 + 95 * Math.cos(a)} y1={100 + 95 * Math.sin(a)}
-                    x2={100 + (major ? 84 : 89) * Math.cos(a)}
-                    y2={100 + (major ? 84 : 89) * Math.sin(a)}
-                    strokeWidth={major ? 1.5 : 0.75}
-                  />
-                );
-              })}
-            </g>
-            <g fill="var(--icpw-primary)">
-              <circle cx="100" cy="5"   r="2.5" />
-              <circle cx="195" cy="100" r="2.5" />
-              <circle cx="100" cy="195" r="2.5" />
-              <circle cx="5"   cy="100" r="2.5" />
-              <circle cx="100" cy="100" r="3.5" />
-            </g>
-          </svg>
-
-          {/* Compass reticle – right */}
-          <svg
-            viewBox="0 0 200 200"
-            style={{
-              position: 'absolute',
-              width: '26%', aspectRatio: '1',
-              top: '50%', right: '-6%',
-              transform: 'translateY(-50%)',
-              pointerEvents: 'none',
-              overflow: 'visible',
-              opacity: 0.28,
-            }}
-            aria-hidden="true"
-          >
-            <g stroke="var(--icpw-tertiary)" fill="none">
-              <circle cx="100" cy="100" r="95" strokeWidth="1" />
-              <circle cx="100" cy="100" r="52" strokeWidth="0.75" />
-              <line x1="33" y1="33" x2="167" y2="167" strokeWidth="0.5" />
-              <line x1="167" y1="33" x2="33" y2="167" strokeWidth="0.5" />
-              {Array.from({ length: 8 }, (_, i) => {
-                const a = (i * 45 - 90) * Math.PI / 180;
-                return (
-                  <line
-                    key={i}
-                    x1={100 + 95 * Math.cos(a)} y1={100 + 95 * Math.sin(a)}
-                    x2={100 + (i % 2 === 0 ? 84 : 89) * Math.cos(a)}
-                    y2={100 + (i % 2 === 0 ? 84 : 89) * Math.sin(a)}
-                    strokeWidth={i % 2 === 0 ? 1.5 : 0.75}
-                  />
-                );
-              })}
-            </g>
-            <g fill="var(--icpw-tertiary)">
-              <circle cx="100" cy="5"   r="2.5" />
-              <circle cx="195" cy="100" r="2.5" />
-              <circle cx="100" cy="195" r="2.5" />
-              <circle cx="5"   cy="100" r="2.5" />
-              <circle cx="100" cy="100" r="3" />
-            </g>
-          </svg>
 
           {/* ── Text – matching original logo layout ── */}
           <div style={{
@@ -144,7 +50,7 @@ export function Home() {
             {/* ICPW */}
             <div style={{
               fontFamily: '"Times New Roman", Times, serif',
-              fontSize: 'clamp(3rem, 10.5vw, 8.5rem)',
+              fontSize: 'clamp(5rem, 16vw, 13rem)',
               fontWeight: 400,
               color: '#376ea7',
               letterSpacing: '0.03em',
@@ -159,14 +65,14 @@ export function Home() {
               width: 'clamp(180px, 48%, 500px)',
               height: '2px',
               background: '#376ea7',
-              margin: '0.45rem 0 0.4rem',
+              margin: '0.6rem 0 0.55rem',
               opacity: 0.65,
             }} />
 
             {/* Process Work */}
             <div style={{
               fontFamily: '"Times New Roman", Times, serif',
-              fontSize: 'clamp(1.4rem, 4.5vw, 3.8rem)',
+              fontSize: 'clamp(1.8rem, 6vw, 5rem)',
               fontWeight: 400,
               color: '#376ea7',
               letterSpacing: '0.02em',
@@ -180,7 +86,7 @@ export function Home() {
             {/* Russian subtitle */}
             <div style={{
               fontFamily: '"Times New Roman", Times, serif',
-              fontSize: 'clamp(0.6rem, 1.3vw, 1rem)',
+              fontSize: 'clamp(0.75rem, 1.8vw, 1.35rem)',
               fontWeight: 700,
               color: '#376ea7',
               textAlign: 'center',
@@ -192,7 +98,7 @@ export function Home() {
             {/* English subtitle */}
             <div style={{
               fontFamily: '"Times New Roman", Times, serif',
-              fontSize: 'clamp(0.58rem, 1.2vw, 0.95rem)',
+              fontSize: 'clamp(0.7rem, 1.6vw, 1.2rem)',
               fontWeight: 700,
               color: '#376ea7',
               textAlign: 'center',
