@@ -48,19 +48,19 @@
   --icpw-secondary: #2a1015;
 }
 
-/* Палитра 4 — Сине-зелёная (смесь 2 и 8, нейтральная) */
+/* Палитра 4 — Синяя (цвет логотипа) */
 .palette-4 {
-  --icpw-surface: #f4f7f5;
-  --icpw-surface-low: #e8eeed;
+  --icpw-surface: #f3f6fa;
+  --icpw-surface-low: #e5edf5;
   --icpw-surface-lowest: #ffffff;
-  --icpw-surface-highest: #d2dbd8;
-  --icpw-primary: #2e6b78;
-  --icpw-primary-dim: #225860;
-  --icpw-on-surface: #1e2a28;
-  --icpw-on-surface-variant: #4a5c5a;
-  --icpw-tertiary: #3a6e5c;
-  --icpw-outline-variant: #9ab0ac;
-  --icpw-secondary: #4a5c5a;
+  --icpw-surface-highest: #c8d8ea;
+  --icpw-primary: #376ea7;
+  --icpw-primary-dim: #2a5a8f;
+  --icpw-on-surface: #1a2535;
+  --icpw-on-surface-variant: #3d5270;
+  --icpw-tertiary: #2e7d9a;
+  --icpw-outline-variant: #90aac5;
+  --icpw-secondary: #3d5270;
 }
 
 /* Палитра 8 — Синяя */

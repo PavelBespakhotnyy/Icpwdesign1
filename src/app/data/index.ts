@@ -174,9 +174,9 @@ export const teachers: Teacher[] = [
     ],
     theme: {
       bg: "#fdf9f0",
-      accent: "#8b6914",
-      text: "#4a3800",
-      heroGradient: "linear-gradient(135deg, #c49a1a 0%, #8b6914 100%)",
+      accent: "var(--icpw-tertiary)",
+      text: "color-mix(in srgb, var(--icpw-tertiary) 70%, black)",
+      heroGradient: "linear-gradient(135deg, var(--icpw-tertiary) 0%, color-mix(in srgb, var(--icpw-tertiary) 70%, black) 100%)",
       tagBg: "#fdefc4",
     }
   }

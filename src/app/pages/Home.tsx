@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { ArrowRight, Calendar, Play, ChevronRight, ExternalLink } from "lucide-react";
 import { events } from "../data";
 import { ContactFormBlock } from "../components/ContactFormBlock";
+import heroPhoto from "../photos/1688164478_kartin-papik-pro-p-kartinki-nebo-listva-45-2420936487.jpg";
 
 const videos = [
   {
@@ -318,24 +319,32 @@ export function Home() {
                 </Link>
               </div>
 
-              {/* Visual accent */}
-              <div
-                className="relative min-h-[280px] lg:min-h-0"
-                style={{
-                  background: 'linear-gradient(135deg, var(--icpw-primary) 0%, var(--icpw-primary-dim) 100%)',
-                  overflow: 'hidden',
-                }}
-              >
+              {/* Photo panel */}
+              <div className="relative min-h-[280px] lg:min-h-0 overflow-hidden">
+                <img
+                  src={heroPhoto}
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                {/* Gradient overlay */}
                 <div
-                  className="absolute inset-0 flex flex-col items-center justify-center p-8 text-white"
-                >
+                  className="absolute inset-0"
+                  style={{ background: 'linear-gradient(135deg, rgba(55,110,167,0.55) 0%, rgba(30,60,100,0.45) 100%)' }}
+                />
+                {/* Stats overlay */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-white">
                   <div
-                    className="text-6xl font-bold tracking-widest mb-3 opacity-20"
-                    style={{ fontFamily: 'var(--font-display)' }}
+                    className="text-5xl font-bold tracking-widest mb-5"
+                    style={{
+                      fontFamily: 'var(--font-display)',
+                      lineHeight: 1,
+                      color: '#ffffff',
+                      letterSpacing: '0.18em',
+                    }}
                   >
                     IAPOP
                   </div>
-                  <div className="grid grid-cols-2 gap-4 w-full max-w-xs">
+                  <div className="grid grid-cols-2 gap-3 w-full max-w-xs">
                     {[
                       { num: '3–4', label: 'года обучения' },
                       { num: '100+', label: 'часов практики' },
@@ -345,12 +354,12 @@ export function Home() {
                       <div
                         key={stat.label}
                         className="text-center p-3 rounded-xl"
-                        style={{ background: 'rgba(255,255,255,0.1)' }}
+                        style={{ background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(6px)' }}
                       >
                         <div className="text-2xl font-bold" style={{ fontFamily: 'var(--font-display)' }}>
                           {stat.num}
                         </div>
-                        <div className="text-xs opacity-75 mt-1" style={{ fontFamily: 'var(--font-body)' }}>
+                        <div className="text-xs opacity-80 mt-1" style={{ fontFamily: 'var(--font-body)' }}>
                           {stat.label}
                         </div>
                       </div>
@@ -494,55 +503,57 @@ export function Home() {
             {videos.map(video => (
               <div
                 key={video.id}
-                className="rounded-xl overflow-hidden group cursor-pointer"
-                style={{ background: 'var(--icpw-surface-lowest)', boxShadow: '0 4px 20px rgba(47,52,46,0.06)' }}
+                className="rounded-2xl overflow-hidden group cursor-pointer"
+                style={{ boxShadow: '0 8px 32px rgba(47,52,46,0.1)', position: 'relative' }}
               >
-                {/* Thumbnail */}
-                <div className="relative overflow-hidden" style={{ aspectRatio: '16/9' }}>
+                {/* Full image with overlay */}
+                <div className="relative overflow-hidden" style={{ aspectRatio: '3/4' }}>
                   <img
                     src={video.thumb}
                     alt={video.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 flex items-center justify-center" style={{ background: 'rgba(47,52,46,0.35)' }}>
+                  {/* Dark gradient overlay at bottom */}
+                  <div
+                    className="absolute inset-0"
+                    style={{ background: 'linear-gradient(to top, rgba(15,20,35,0.92) 0%, rgba(15,20,35,0.3) 50%, transparent 100%)' }}
+                  />
+                  {/* Play button */}
+                  <div className="absolute inset-0 flex items-center justify-center">
                     <div
-                      className="w-12 h-12 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:scale-110"
-                      style={{ background: 'rgba(255,255,255,0.9)' }}
+                      className="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110"
+                      style={{ background: 'rgba(255,255,255,0.18)', backdropFilter: 'blur(8px)', border: '1.5px solid rgba(255,255,255,0.4)' }}
                     >
-                      <Play size={18} style={{ color: 'var(--icpw-primary)', marginLeft: 2 }} fill="currentColor" />
+                      <Play size={20} style={{ color: '#ffffff', marginLeft: 3 }} fill="currentColor" />
                     </div>
                   </div>
+                  {/* Duration badge */}
                   <div
-                    className="absolute bottom-2 right-2 px-2 py-0.5 rounded text-xs"
-                    style={{
-                      background: 'rgba(0,0,0,0.7)',
-                      color: '#ffffff',
-                      fontFamily: 'var(--font-body)',
-                    }}
+                    className="absolute top-3 right-3 px-2.5 py-1 rounded-lg text-xs font-medium"
+                    style={{ background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(6px)', color: '#ffffff', fontFamily: 'var(--font-body)' }}
                   >
                     {video.duration}
                   </div>
-                </div>
-                {/* Info */}
-                <div className="p-4">
-                  <h3
-                    className="mb-1"
-                    style={{
-                      fontFamily: 'var(--font-display)',
-                      fontWeight: 600,
-                      fontSize: '0.9rem',
-                      color: 'var(--icpw-on-surface)',
-                      lineHeight: 1.4,
-                    }}
-                  >
-                    {video.title}
-                  </h3>
-                  <p
-                    className="text-xs"
-                    style={{ fontFamily: 'var(--font-body)', color: 'var(--icpw-on-surface-variant)', lineHeight: 1.5 }}
-                  >
-                    {video.description}
-                  </p>
+                  {/* Text at bottom of image */}
+                  <div className="absolute bottom-0 left-0 right-0 p-5">
+                    <p
+                      className="text-xs mb-1.5 uppercase tracking-widest"
+                      style={{ fontFamily: 'var(--font-body)', color: 'rgba(255,255,255,0.6)', fontWeight: 600 }}
+                    >
+                      {video.description}
+                    </p>
+                    <h3
+                      style={{
+                        fontFamily: 'var(--font-display)',
+                        fontWeight: 700,
+                        fontSize: '1.05rem',
+                        color: '#ffffff',
+                        lineHeight: 1.35,
+                      }}
+                    >
+                      {video.title}
+                    </h3>
+                  </div>
                 </div>
               </div>
             ))}

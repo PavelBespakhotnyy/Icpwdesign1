@@ -49,7 +49,7 @@ export function About() {
           <div
             className="absolute -bottom-4 -right-4 px-6 py-4 rounded-xl"
             style={{
-              background: 'linear-gradient(135deg, #50662b 0%, #455a20 100%)',
+              background: 'linear-gradient(135deg, var(--icpw-primary) 0%, var(--icpw-primary-dim) 100%)',
               color: '#fff',
               boxShadow: '0 8px 32px rgba(80,102,43,0.25)',
             }}
@@ -133,7 +133,7 @@ export function About() {
             >
               <div
                 className="mb-4 w-10 h-10 rounded-xl flex items-center justify-center"
-                style={{ background: 'rgba(80,102,43,0.1)', color: 'var(--icpw-primary)' }}
+                style={{ background: 'color-mix(in srgb, var(--icpw-primary) 10%, transparent)', color: 'var(--icpw-primary)' }}
               >
                 {item.icon}
               </div>

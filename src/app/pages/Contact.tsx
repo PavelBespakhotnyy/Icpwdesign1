@@ -75,7 +75,7 @@ export function Contact() {
             >
               <div
                 className="shrink-0 w-10 h-10 rounded-xl flex items-center justify-center"
-                style={{ background: 'rgba(80,102,43,0.1)', color: item.color }}
+                style={{ background: 'color-mix(in srgb, var(--icpw-primary) 10%, transparent)', color: item.color }}
               >
                 {item.icon}
               </div>
@@ -89,7 +89,7 @@ export function Contact() {
                 {item.link ? (
                   <a
                     href={item.link}
-                    className="text-sm transition-colors hover:text-[#50662b]"
+                    className="text-sm transition-colors hover:text-[var(--icpw-primary)]"
                     style={{ fontFamily: 'var(--font-body)', color: 'var(--icpw-on-surface)', textDecoration: 'none' }}
                   >
                     {item.content}

@@ -38,7 +38,7 @@ export default function Contacts() {
   return (
     <div className="max-w-5xl mx-auto px-6 py-16">
       <div style={{ marginBottom: '48px' }}>
-        <p style={{ fontSize: '0.7rem', color: '#50662b', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600, marginBottom: '12px' }}>
+        <p style={{ fontSize: '0.7rem', color: 'var(--icpw-primary)', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600, marginBottom: '12px' }}>
           Свяжитесь с нами
         </p>
         <h1
@@ -66,19 +66,19 @@ export default function Contacts() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                 {[
                   {
-                    icon: <Mail size={16} style={{ color: '#50662b' }} />,
+                    icon: <Mail size={16} style={{ color: 'var(--icpw-primary)' }} />,
                     label: 'Email',
                     value: 'info@icpw.ru',
                     href: 'mailto:info@icpw.ru',
                   },
                   {
-                    icon: <Phone size={16} style={{ color: '#50662b' }} />,
+                    icon: <Phone size={16} style={{ color: 'var(--icpw-primary)' }} />,
                     label: 'Телефон',
                     value: '+7 (495) 000-00-00',
                     href: 'tel:+74950000000',
                   },
                   {
-                    icon: <MapPin size={16} style={{ color: '#50662b' }} />,
+                    icon: <MapPin size={16} style={{ color: 'var(--icpw-primary)' }} />,
                     label: 'Адрес',
                     value: 'Москва, Россия',
                     href: undefined,
@@ -146,7 +146,7 @@ export default function Contacts() {
                 <div
                   style={{
                     width: '56px', height: '56px', borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #50662b, #455a20)',
+                    background: 'linear-gradient(135deg, var(--icpw-primary), var(--icpw-primary-dim))',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     margin: '0 auto 16px',
                   }}
@@ -262,11 +262,11 @@ export default function Contacts() {
                       id="consent"
                       checked={form.consent}
                       onChange={e => setForm({ ...form, consent: e.target.checked })}
-                      style={{ marginTop: '3px', accentColor: '#50662b', flexShrink: 0 }}
+                      style={{ marginTop: '3px', accentColor: 'var(--icpw-primary)', flexShrink: 0 }}
                     />
                     <label htmlFor="consent" style={{ fontSize: '0.8rem', color: '#5c605a', lineHeight: 1.6, cursor: 'pointer' }}>
                       Я ознакомлен(а) и согласен(на) с{' '}
-                      <span style={{ color: '#0e6781', textDecoration: 'underline', cursor: 'pointer' }}>
+                      <span style={{ color: 'var(--icpw-tertiary)', textDecoration: 'underline', cursor: 'pointer' }}>
                         Политикой конфиденциальности
                       </span>{' '}
                       и даю согласие на обработку персональных данных в соответствии с Федеральным законом №152-ФЗ «О персональных данных»
@@ -288,7 +288,7 @@ export default function Contacts() {
                       gap: '8px',
                       padding: '13px 32px',
                       borderRadius: '8px',
-                      background: 'linear-gradient(135deg, #50662b, #455a20)',
+                      background: 'linear-gradient(135deg, var(--icpw-primary), var(--icpw-primary-dim))',
                       color: '#ffffff',
                       border: 'none',
                       cursor: 'pointer',

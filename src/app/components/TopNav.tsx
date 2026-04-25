@@ -8,7 +8,7 @@ const PALETTES: { id: Palette; label: string; color: string }[] = [
   { id: "2", label: "Палитра 2", color: "#00897b" },
   { id: "8", label: "Палитра 8", color: "#1565c0" },
   { id: "3", label: "Палитра 3", color: "#f9ce00" },
-  { id: "4", label: "Палитра 4", color: "#2e6b78" },
+  { id: "4", label: "Палитра 4", color: "#376ea7" },
 ];
 
 const sidebarSections = [
@@ -43,7 +43,7 @@ const sidebarSections = [
 
 const navItems = [
   { label: "О нас", to: "/about" },
-  { label: "Наши преподаватели", to: "/teachers" },
+  { label: "Преподаватели", to: "/teachers" },
   { label: "Отзывы", to: "/reviews" },
   { label: "Библиотека", to: "/library" },
   { label: "FAQ", to: "/faq" },
@@ -172,23 +172,12 @@ export function TopNav() {
                 fontFamily: 'var(--font-display)',
                 fontWeight: 700,
                 fontSize: '1.4rem',
-                color: 'var(--icpw-primary)',
+                color: '#376ea7',
                 letterSpacing: '0.1em',
                 lineHeight: 1,
               }}
             >
               ICPW
-            </span>
-            <span
-              className="hidden sm:block text-xs tracking-widest"
-              style={{
-                fontFamily: 'var(--font-display)',
-                color: 'var(--icpw-on-surface-variant)',
-                letterSpacing: '0.2em',
-                paddingTop: '2px',
-              }}
-            >
-              PROCESS WORK
             </span>
           </Link>
 
@@ -334,6 +323,44 @@ export function TopNav() {
                 {item.label}
               </NavLink>
             ))}
+          </div>
+
+          <div style={{ borderTop: '1px solid rgba(175,179,172,0.2)', marginTop: '8px', paddingTop: '12px' }}>
+            <div
+              className="px-2 pb-2"
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.7rem',
+                fontWeight: 700,
+                color: 'var(--icpw-on-surface)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em',
+              }}
+            >
+              Палитра
+            </div>
+            <div className="flex gap-2 px-2">
+              {PALETTES.map((p) => (
+                <button
+                  key={p.id}
+                  onClick={() => setPalette(p.id)}
+                  title={p.label}
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200"
+                  style={{
+                    fontFamily: 'var(--font-body)',
+                    background: palette === p.id ? p.color : 'rgba(0,0,0,0.04)',
+                    color: palette === p.id ? '#ffffff' : 'var(--icpw-on-surface-variant)',
+                    fontWeight: palette === p.id ? 600 : 400,
+                  }}
+                >
+                  <span
+                    className="w-2.5 h-2.5 rounded-full shrink-0"
+                    style={{ background: p.color, opacity: palette === p.id ? 1 : 0.6 }}
+                  />
+                  {p.id}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       )}

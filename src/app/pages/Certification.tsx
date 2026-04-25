@@ -44,7 +44,7 @@ export default function Certification() {
   return (
     <div className="max-w-4xl mx-auto px-6 py-16">
       <div style={{ marginBottom: '48px' }}>
-        <p style={{ fontSize: '0.7rem', color: '#50662b', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600, marginBottom: '12px' }}>
+        <p style={{ fontSize: '0.7rem', color: 'var(--icpw-primary)', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600, marginBottom: '12px' }}>
           Профессиональное признание
         </p>
         <h1
@@ -93,8 +93,8 @@ export default function Certification() {
               }}
             >
               {i === 0 && (
-                <div style={{ position: 'absolute', top: '12px', right: '12px', backgroundColor: 'rgba(80,102,43,0.1)', borderRadius: '6px', padding: '3px 8px' }}>
-                  <p style={{ fontSize: '0.65rem', color: '#50662b', fontWeight: 600, letterSpacing: '0.05em' }}>Наша программа</p>
+                <div style={{ position: 'absolute', top: '12px', right: '12px', backgroundColor: 'color-mix(in srgb, var(--icpw-primary) 10%, transparent)', borderRadius: '6px', padding: '3px 8px' }}>
+                  <p style={{ fontSize: '0.65rem', color: 'var(--icpw-primary)', fontWeight: 600, letterSpacing: '0.05em' }}>Наша программа</p>
                 </div>
               )}
               <p style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 700, fontSize: '1rem', color: '#2f342e', lineHeight: 1.3, marginBottom: '4px' }}>{level.title}</p>
@@ -103,7 +103,7 @@ export default function Certification() {
               <div>
                 {level.docs.map(doc => (
                   <div key={doc} style={{ display: 'flex', gap: '6px', marginBottom: '4px' }}>
-                    <Check size={13} style={{ color: '#50662b', marginTop: '2px', flexShrink: 0 }} />
+                    <Check size={13} style={{ color: 'var(--icpw-primary)', marginTop: '2px', flexShrink: 0 }} />
                     <p style={{ fontSize: '0.8rem', color: '#5c605a' }}>{doc}</p>
                   </div>
                 ))}
@@ -148,7 +148,7 @@ export default function Certification() {
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                 }}
               >
-                <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 800, fontSize: '0.8rem', color: '#50662b' }}>{stage.num}</span>
+                <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 800, fontSize: '0.8rem', color: 'var(--icpw-primary)' }}>{stage.num}</span>
               </div>
               <div>
                 <p style={{ fontWeight: 600, color: '#2f342e', fontSize: '0.95rem', marginBottom: '4px' }}>{stage.title}</p>
@@ -173,7 +173,7 @@ export default function Certification() {
             style={{
               display: 'inline-flex', alignItems: 'center', gap: '6px',
               padding: '11px 24px', borderRadius: '8px',
-              background: 'linear-gradient(135deg, #50662b, #455a20)',
+              background: 'linear-gradient(135deg, var(--icpw-primary), var(--icpw-primary-dim))',
               color: '#ffffff', textDecoration: 'none',
               fontFamily: "'Work Sans', sans-serif", fontWeight: 500, fontSize: '0.9rem',
             }}
@@ -185,7 +185,7 @@ export default function Certification() {
             style={{
               display: 'inline-flex', alignItems: 'center', gap: '6px',
               padding: '11px 24px', borderRadius: '8px',
-              backgroundColor: '#ffffff', color: '#50662b', textDecoration: 'none',
+              backgroundColor: '#ffffff', color: 'var(--icpw-primary)', textDecoration: 'none',
               fontFamily: "'Work Sans', sans-serif", fontWeight: 500, fontSize: '0.9rem',
             }}
           >

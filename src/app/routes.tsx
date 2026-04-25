@@ -42,7 +42,7 @@ function NotFound() {
         href="#/"
         className="px-6 py-3 rounded-lg text-sm text-white"
         style={{
-          background: 'linear-gradient(135deg, #50662b 0%, #455a20 100%)',
+          background: 'linear-gradient(135deg, var(--icpw-primary) 0%, var(--icpw-primary-dim) 100%)',
           fontFamily: 'var(--font-body)',
           fontWeight: 500,
           textDecoration: 'none',

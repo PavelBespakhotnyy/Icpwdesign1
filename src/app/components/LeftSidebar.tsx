@@ -89,7 +89,7 @@ export function LeftSidebar({ className = "" }: { className?: string }) {
 
   return (
     <aside
-      className={`hidden xl:flex flex-col shrink-0 transition-all duration-300 ${collapsed ? 'w-12' : 'w-64'} ${className}`}
+      className={`hidden lg:flex flex-col shrink-0 transition-all duration-300 ${collapsed ? 'w-12' : 'w-64'} ${className}`}
       style={{
         background: 'var(--icpw-surface-low)',
         position: 'sticky',
@@ -116,7 +116,7 @@ export function LeftSidebar({ className = "" }: { className?: string }) {
             label="Образовательные программы"
             icon={<GraduationCap size={15} />}
             defaultOpen={true}
-            topLink={{ to: "/programs/international-certification", label: "Описание программы" }}
+            topLink={{ to: "/programs", label: "Все программы" }}
           >
             <SidebarLink to="/programs/retraining" label="Переподготовка" />
             <SidebarLink to="/programs/advancement" label="Повышение квалификации" />

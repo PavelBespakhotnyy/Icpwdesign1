@@ -109,8 +109,8 @@ export function Therapy() {
             </div>
             <div className="p-5">
               <div className="flex items-center gap-1.5 mb-1">
-                <Star size={12} fill="currentColor" style={{ color: '#c49a1a' }} />
-                <span className="text-xs" style={{ fontFamily: 'var(--font-body)', color: '#8b6914', fontWeight: 600 }}>
+                <Star size={12} fill="currentColor" style={{ color: 'var(--icpw-tertiary)' }} />
+                <span className="text-xs" style={{ fontFamily: 'var(--font-body)', color: 'var(--icpw-tertiary)', fontWeight: 600 }}>
                   Выпускник {g.year}
                 </span>
               </div>
@@ -206,7 +206,7 @@ export function Therapy() {
         <Link
           to="/contact"
           className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm text-white transition-opacity hover:opacity-90"
-          style={{ background: 'linear-gradient(135deg, #50662b 0%, #455a20 100%)', fontFamily: 'var(--font-body)', fontWeight: 500, textDecoration: 'none' }}
+          style={{ background: 'linear-gradient(135deg, var(--icpw-primary) 0%, var(--icpw-primary-dim) 100%)', fontFamily: 'var(--font-body)', fontWeight: 500, textDecoration: 'none' }}
         >
           Написать <ArrowRight size={14} />
         </Link>

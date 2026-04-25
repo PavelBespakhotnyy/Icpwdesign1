@@ -205,7 +205,7 @@ export function ContactFormBlock({ compact = false }: ContactFormBlockProps) {
         type="submit"
         className="flex items-center gap-2 px-7 py-3 rounded-lg transition-all duration-200 text-sm"
         style={{
-          background: 'linear-gradient(135deg, #50662b 0%, #455a20 100%)',
+          background: 'linear-gradient(135deg, var(--icpw-primary) 0%, var(--icpw-primary-dim) 100%)',
           color: '#ffffff',
           fontFamily: 'var(--font-body)',
           fontWeight: 500,

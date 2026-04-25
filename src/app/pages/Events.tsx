@@ -3,10 +3,10 @@ import { Calendar, MapPin, ArrowRight } from "lucide-react";
 import { events } from "../data";
 
 const typeColors: Record<string, { bg: string; text: string }> = {
-  'Интенсив': { bg: 'rgba(80,102,43,0.1)', text: '#50662b' },
-  'Семинар': { bg: 'rgba(14,103,129,0.1)', text: '#0e6781' },
+  'Интенсив': { bg: 'color-mix(in srgb, var(--icpw-primary) 10%, transparent)', text: 'var(--icpw-primary)' },
+  'Семинар': { bg: 'color-mix(in srgb, var(--icpw-tertiary) 10%, transparent)', text: 'var(--icpw-tertiary)' },
   'Вебинар (бесплатно)': { bg: 'rgba(192,114,74,0.1)', text: '#c0724a' },
-  'Программа': { bg: 'rgba(139,105,20,0.1)', text: '#8b6914' },
+  'Программа': { bg: 'color-mix(in srgb, var(--icpw-tertiary) 10%, transparent)', text: 'var(--icpw-tertiary)' },
 };
 
 export function Events() {
@@ -45,7 +45,7 @@ export function Events() {
       {/* Events */}
       <div className="space-y-5">
         {events.map(event => {
-          const colors = typeColors[event.type] || { bg: 'rgba(80,102,43,0.1)', text: '#50662b' };
+          const colors = typeColors[event.type] || { bg: 'color-mix(in srgb, var(--icpw-primary) 10%, transparent)', text: 'var(--icpw-primary)' };
           return (
             <div
               key={event.id}
@@ -131,7 +131,7 @@ export function Events() {
           to="/contact"
           className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm text-white transition-opacity hover:opacity-90"
           style={{
-            background: 'linear-gradient(135deg, #50662b 0%, #455a20 100%)',
+            background: 'linear-gradient(135deg, var(--icpw-primary) 0%, var(--icpw-primary-dim) 100%)',
             fontFamily: 'var(--font-body)',
             fontWeight: 500,
             textDecoration: 'none',

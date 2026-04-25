@@ -8,12 +8,12 @@ interface ThemeContextValue {
 }
 
 const ThemeContext = createContext<ThemeContextValue>({
-  palette: "2",
+  palette: "4",
   setPalette: () => {},
 });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [palette, setPalette] = useState<Palette>("2");
+  const [palette, setPalette] = useState<Palette>("4");
 
   useEffect(() => {
     const root = document.documentElement;

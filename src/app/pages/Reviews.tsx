@@ -69,7 +69,7 @@ export function Reviews() {
                 <div
                   className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-white shrink-0"
                   style={{
-                    background: 'linear-gradient(135deg, #50662b 0%, #455a20 100%)',
+                    background: 'linear-gradient(135deg, var(--icpw-primary) 0%, var(--icpw-primary-dim) 100%)',
                     fontFamily: 'var(--font-display)',
                   }}
                 >

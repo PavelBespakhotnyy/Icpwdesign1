@@ -6,16 +6,16 @@ type Category = 'all' | 'book' | 'article' | 'dissertation';
 
 const categoryConfig: Record<Category, { label: string; icon: React.ReactNode; color: string }> = {
   all: { label: 'Все', icon: <Search size={15} />, color: 'var(--icpw-primary)' },
-  book: { label: 'Книги', icon: <BookOpen size={15} />, color: '#50662b' },
-  article: { label: 'Статьи', icon: <FileText size={15} />, color: '#0e6781' },
-  dissertation: { label: 'Диссертации', icon: <GraduationCap size={15} />, color: '#516170' },
+  book: { label: 'Книги', icon: <BookOpen size={15} />, color: 'var(--icpw-primary)' },
+  article: { label: 'Статьи', icon: <FileText size={15} />, color: 'var(--icpw-tertiary)' },
+  dissertation: { label: 'Диссертации', icon: <GraduationCap size={15} />, color: 'var(--icpw-secondary)' },
 };
 
 function LibraryCard({ item }: { item: Book }) {
   const catStyle = {
-    book: { tag: 'rgba(80,102,43,0.1)', tagText: '#50662b' },
-    article: { tag: 'rgba(14,103,129,0.1)', tagText: '#0e6781' },
-    dissertation: { tag: 'rgba(81,97,112,0.1)', tagText: '#516170' },
+    book: { tag: 'color-mix(in srgb, var(--icpw-primary) 10%, transparent)', tagText: 'var(--icpw-primary)' },
+    article: { tag: 'color-mix(in srgb, var(--icpw-tertiary) 10%, transparent)', tagText: 'var(--icpw-tertiary)' },
+    dissertation: { tag: 'color-mix(in srgb, var(--icpw-secondary) 10%, transparent)', tagText: 'var(--icpw-secondary)' },
   }[item.category];
 
   return (
@@ -72,11 +72,11 @@ function LibraryCard({ item }: { item: Book }) {
           <a
             href={item.fileUrl}
             className="shrink-0 w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-200"
-            style={{ background: 'rgba(80,102,43,0.1)', color: 'var(--icpw-primary)' }}
+            style={{ background: 'color-mix(in srgb, var(--icpw-primary) 10%, transparent)', color: 'var(--icpw-primary)' }}
             title="Скачать"
             onClick={e => e.preventDefault()}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(80,102,43,0.18)'; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(80,102,43,0.1)'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'color-mix(in srgb, var(--icpw-primary) 10%, transparent)'; }}
           >
             <Download size={15} />
           </a>
@@ -134,7 +134,7 @@ export function Library() {
           onClick={() => setShowUploadModal(true)}
           className="flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm shrink-0 transition-opacity hover:opacity-90"
           style={{
-            background: 'linear-gradient(135deg, #50662b 0%, #455a20 100%)',
+            background: 'linear-gradient(135deg, var(--icpw-primary) 0%, var(--icpw-primary-dim) 100%)',
             color: '#ffffff',
             fontFamily: 'var(--font-body)',
             fontWeight: 500,
@@ -250,7 +250,7 @@ export function Library() {
                   className="mb-5 flex items-center gap-2"
                   style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: '1.1rem', color: 'var(--icpw-on-surface)' }}
                 >
-                  <GraduationCap size={18} style={{ color: '#516170' }} />
+                  <GraduationCap size={18} style={{ color: 'var(--icpw-secondary)' }} />
                   Диссертации
                 </h2>
               )}
@@ -335,7 +335,7 @@ export function Library() {
               <button
                 onClick={() => setShowUploadModal(false)}
                 className="flex-1 py-2.5 rounded-lg text-sm text-white"
-                style={{ background: 'linear-gradient(135deg, #50662b 0%, #455a20 100%)', fontFamily: 'var(--font-body)', fontWeight: 500, border: 'none', cursor: 'pointer' }}
+                style={{ background: 'linear-gradient(135deg, var(--icpw-primary) 0%, var(--icpw-primary-dim) 100%)', fontFamily: 'var(--font-body)', fontWeight: 500, border: 'none', cursor: 'pointer' }}
               >
                 Отправить на проверку
               </button>

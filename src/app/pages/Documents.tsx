@@ -52,7 +52,7 @@ export default function Documents() {
   return (
     <div className="max-w-5xl mx-auto px-6 py-16">
       <div style={{ marginBottom: '40px' }}>
-        <p style={{ fontSize: '0.7rem', color: '#50662b', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600, marginBottom: '12px' }}>
+        <p style={{ fontSize: '0.7rem', color: 'var(--icpw-primary)', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600, marginBottom: '12px' }}>
           Образование
         </p>
         <h1
@@ -80,7 +80,7 @@ export default function Documents() {
           style={{
             display: 'flex', alignItems: 'center', gap: '6px',
             padding: '9px 20px', borderRadius: '8px', border: 'none', cursor: 'pointer',
-            background: 'linear-gradient(135deg, #50662b, #455a20)',
+            background: 'linear-gradient(135deg, var(--icpw-primary), var(--icpw-primary-dim))',
             color: '#ffffff', fontSize: '0.875rem', fontWeight: 500,
             fontFamily: "'Work Sans', sans-serif",
           }}
@@ -167,7 +167,7 @@ export default function Documents() {
                 disabled={!newDoc.name || !newDoc.src}
                 style={{
                   padding: '9px 18px', borderRadius: '8px', border: 'none',
-                  background: newDoc.name && newDoc.src ? 'linear-gradient(135deg, #50662b, #455a20)' : '#e0e4dc',
+                  background: newDoc.name && newDoc.src ? 'linear-gradient(135deg, var(--icpw-primary), var(--icpw-primary-dim))' : '#e0e4dc',
                   color: newDoc.name && newDoc.src ? '#ffffff' : '#afb3ac',
                   cursor: newDoc.name && newDoc.src ? 'pointer' : 'default',
                   fontSize: '0.875rem', fontFamily: "'Work Sans', sans-serif", fontWeight: 500,

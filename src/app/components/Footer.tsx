@@ -50,7 +50,7 @@ export function Footer() {
                 <li key={item.to}>
                   <Link
                     to={item.to}
-                    className="text-xs transition-colors hover:text-[#50662b]"
+                    className="text-xs transition-colors hover:text-[var(--icpw-primary)]"
                     style={{ fontFamily: 'var(--font-body)', color: 'var(--icpw-on-surface-variant)', textDecoration: 'none' }}
                   >
                     {item.label}
@@ -80,7 +80,7 @@ export function Footer() {
                 <li key={item.to}>
                   <Link
                     to={item.to}
-                    className="text-xs transition-colors hover:text-[#50662b]"
+                    className="text-xs transition-colors hover:text-[var(--icpw-primary)]"
                     style={{ fontFamily: 'var(--font-body)', color: 'var(--icpw-on-surface-variant)', textDecoration: 'none' }}
                   >
                     {item.label}
@@ -103,7 +103,7 @@ export function Footer() {
                 <Mail size={13} style={{ color: 'var(--icpw-tertiary)', marginTop: 2, shrink: 0 }} className="shrink-0" />
                 <a
                   href="mailto:info@icpw.ru"
-                  className="text-xs transition-colors hover:text-[#0e6781]"
+                  className="text-xs transition-colors hover:text-[var(--icpw-tertiary)]"
                   style={{ fontFamily: 'var(--font-body)', color: 'var(--icpw-on-surface-variant)', textDecoration: 'none' }}
                 >
                   info@icpw.ru
@@ -113,7 +113,7 @@ export function Footer() {
                 <Phone size={13} style={{ color: 'var(--icpw-tertiary)', marginTop: 2 }} className="shrink-0" />
                 <a
                   href="tel:+74951234567"
-                  className="text-xs transition-colors hover:text-[#0e6781]"
+                  className="text-xs transition-colors hover:text-[var(--icpw-tertiary)]"
                   style={{ fontFamily: 'var(--font-body)', color: 'var(--icpw-on-surface-variant)', textDecoration: 'none' }}
                 >
                   +7 (495) 123-45-67
