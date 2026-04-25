@@ -36,7 +36,7 @@ export function Home() {
 
         {/* ── Typographic Hero Block (same size as the old photo) ── */}
         <div style={{
-          width: '100%', aspectRatio: '1270 / 540', overflow: 'hidden', position: 'relative',
+          width: '100%', aspectRatio: '1270 / 540', minHeight: '320px', overflow: 'hidden', position: 'relative',
           backgroundColor: 'var(--icpw-surface)',
         }}>
 
@@ -239,6 +239,17 @@ export function Home() {
                 />
                 {/* Stats overlay */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-white">
+                  <div
+                    className="mb-2 uppercase tracking-widest text-xs"
+                    style={{
+                      fontFamily: 'var(--font-body)',
+                      color: 'rgba(255,255,255,0.7)',
+                      fontWeight: 600,
+                      letterSpacing: '0.15em',
+                    }}
+                  >
+                    Стандарт аккредитации
+                  </div>
                   <div
                     className="text-5xl font-bold tracking-widest mb-5"
                     style={{
